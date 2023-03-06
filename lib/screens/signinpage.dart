@@ -176,6 +176,19 @@ class _SignInState extends State<SignIn> {
                       email: email, password: password);
                   Navigator.pushReplacementNamed(context, 'home_screen');
                 } catch (e) {
+                  var error = e.toString().split(']');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.red,
+                      content: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                        ),
+                        child: Text(error[1]),
+                      ),
+                    ),
+                  );
                   print(e);
                 }
               },
