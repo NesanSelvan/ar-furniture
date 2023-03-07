@@ -28,12 +28,47 @@ class _CategoryPageState extends State<CategoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ElevatedButton(
-          onPressed: () {
-            print(model);
-          },
-          child: Icon(Icons.accessibility_new_outlined)),
-    );
+    return SingleChildScrollView(
+        //   scrollDirection: Axis.vertical,
+        //   child: Container(
+        //     height: MediaQuery.of(context).size.height,
+        //     width: MediaQuery.of(context).size.width,
+        //     child: StreamBuilder<QuerySnapshot>(
+        //         stream: FirebaseFirestore.instance.collection("models").snapshots(),
+        //         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        //           if (snapshot.connectionState == ConnectionState.waiting) {
+        //             return const CircularProgressIndicator();
+        //           }
+        //           final userSnapshot = snapshot.data?.docs;
+        //           if (userSnapshot!.isEmpty) {
+        //             return const Text("no data");
+        //           }
+        //           return Column(
+        //             children: <Widget>[
+        //               Expanded(
+        //                 child: ListView.builder(
+        //                     itemCount: userSnapshot.length,
+        //                     itemBuilder: (context, index) {
+        //                       return Padding(
+        //                         padding: const EdgeInsets.symmetric(horizontal: 20),
+        //                         child: Container(
+        //                           margin: EdgeInsets.only(bottom: 15),
+        //                           decoration: BoxDecoration(
+        //                               color: Colors.deepPurple.shade400,
+        //                               borderRadius: BorderRadius.circular(24)),
+        //                           //title: Text(userSnapshot[index]["url"].toString()),
+        //                           width: MediaQuery.of(context).size.width * 1,
+        //                           height: MediaQuery.of(context).size.height * 0.15,
+        //                           child: Center(
+        //                               child: Text(userSnapshot[index]["name"])),
+        //                         ),
+        //                       );
+        //                     }),
+        //               ),
+        //             ],
+        //           );
+        //         }),
+        //   ),
+        );
   }
 }

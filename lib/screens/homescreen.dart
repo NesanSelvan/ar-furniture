@@ -160,15 +160,18 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Container(
+        // height: MediaQuery.of(context).size.height,
+        // width: MediaQuery.of(context).size.width,
+        //color: Colors.black,
         child: SliderDrawer(
             sliderBoxShadow: SliderBoxShadow(color: Colors.deepPurple.shade200),
             // animationDuration: 100,
             appBar: SliderAppBar(
                 appBarPadding:
-                    EdgeInsets.symmetric(vertical: 45, horizontal: 10),
+                    EdgeInsets.symmetric(vertical: 40, horizontal: 10),
                 drawerIconSize: 35,
                 drawerIconColor: Colors.deepPurple.shade400,
-                appBarHeight: MediaQuery.of(context).size.height * 0.14,
+                appBarHeight: MediaQuery.of(context).size.height * 0.1,
                 appBarColor: Colors.deepPurple.shade100,
                 title: Text(title,
                     style: const TextStyle(
@@ -182,13 +185,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (title == "LogOut") {
                   await _signOut();
                   Navigator.pushReplacementNamed(context, "login_screen");
-                }
+                } else if (title == "Notifications") {}
                 setState(() {
                   this.title = title;
                 });
               },
             ),
             child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
                   if (_currentindex == 0)
@@ -272,7 +276,7 @@ class _SliderViewState extends State<_SliderView> {
           ),
           ...[
             Menu(Icons.home, 'Home'),
-            Menu(Icons.add_circle, 'Add Post'),
+            Menu(Icons.card_giftcard_outlined, 'Offers'),
             Menu(Icons.notifications_active, "Notifications"),
             Menu(Icons.favorite, 'Likes'),
             Menu(Icons.settings, 'Setting'),

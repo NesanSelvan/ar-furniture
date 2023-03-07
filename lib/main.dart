@@ -25,13 +25,30 @@ class MyApp extends StatelessWidget {
       initialRoute: FirebaseAuth.instance.currentUser == null
           ? 'login_screen'
           : 'home_screen',
-      routes: {
-        'registration_screen': (context) => SignIn(),
-        'login_screen': (context) => LoginPage(),
-        'home_screen': (context) => HomeScreen(),
-        "ar_screen": (context) => ArScreen(),
-        //"category_screen": (context) => CategoriesScreen()
-        // "showdata": (context) => AddData()
+      onGenerateRoute: (settings) {
+        late Widget currentScreen;
+        switch (settings.name) {
+          case 'registration_screen':
+            currentScreen = SignIn();
+            break;
+          case 'login_screen':
+            currentScreen = LoginPage();
+            break;
+          case 'home_screen':
+            currentScreen = HomeScreen();
+            break;
+          case 'ar_screen':
+            final args = settings.arguments as Map<String, dynamic>;
+
+            currentScreen = ArScreen(
+              url: args["url"].toString(),
+            );
+            break;
+          default:
+            currentScreen = SignIn();
+            break;
+        }
+        return MaterialPageRoute(builder: (context) => currentScreen);
       },
     );
   }
